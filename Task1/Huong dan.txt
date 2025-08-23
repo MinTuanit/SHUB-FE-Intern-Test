@@ -1,1 +1,11 @@
-- dùng thư viện xlsx
+- Dùng thư viện xlsx, React, MUI
+- Giao diện: 
+  + 1 header(Trích xuất dữ liệu)
+  + 1 nút chọn load file
+  + 2 TimePicker để chọn giờ
+  + 1 Thẻ span hiện Tổng thành tiền
+  + 1 bảng hiển thị dữ liệu
+
+ - Cách thực hiện: 
+   + Khi bấm nút load file sẽ hiển thị hộp thoại chọn file (mặc định file là .xlsx)
+   + 
