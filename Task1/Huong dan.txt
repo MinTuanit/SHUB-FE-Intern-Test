@@ -7,7 +7,7 @@
   + 1 Thẻ span hiện Tổng thành tiền
   + 1 bảng hiển thị dữ liệu
 
- - Cách thực hiện: 
+- Cách thực hiện: 
    + Khi bấm nút load file sẽ hiển thị hộp thoại chọn file (mặc định file là .xlsx).
    + Sau khi chọn file xong load dữ liệu từ sheet đầu tiền ra mảng 2 chiều (mỗi dòng là 1 phần tử, mỗ ô là phần tử con).
    + Gán các thông tin (Chuỗi, Trạm, ...) vào một useState để lấy khi cần.
@@ -17,4 +17,10 @@
    + Dùng useMemo để quản lý sự thay đổi.
    + Sẽ có 1 hàm để tính tổng thành tiền của dữ liệu.
 
-- Cấu trúc dự án:
+- Hướng dẫn thực hiện:
+   + Sau khi clone dự án về tiến hành cài thự viện bằng các câu lệnh như sau:
+     cd Task1/task1
+     npm i
+     npm run dev
+   + Mở đường link http://localhost:3000/ để gian diện, nhấn nút "Go to Report Page" để xem giao diện trang Report
+   + Upload file, chọn giờ bắt đầu, giờ kết thúc để tính Tổng thành tiền tương ứng.
