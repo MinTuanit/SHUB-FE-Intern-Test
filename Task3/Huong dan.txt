@@ -1,1 +1,43 @@
-- dùng thư viện xlsx
+- Thiết kế cơ sở dữ liệu gồm:
+   1. Bảng gas_station (Trạm xăng): Chứa thông tin của từng trạm xăng.
+   + Các cột:
+      id (PK, int): khóa chính, định danh trạm xăng.
+      name (varchar): tên trạm xăng.
+      address (varchar): địa chỉ.
+      phone (varchar): số điện thoại.
+   + Một trạm xăng có thể có nhiều trụ bơm và nhiều giao dịch.
+
+   2. Bảng product (Sản phẩm nhiên liệu): Lưu thông tin về các loại xăng, dầu (hoặc sản phẩm khác).
+   + Các cột:
+      id (PK, int): khóa chính, định danh sản phẩm.
+      name (varchar): tên sản phẩm (VD: Xăng RON 95-IV).
+      type (varchar): loại sản phẩm (VD: Xăng, Dầu).
+      price (decimal): giá bán 1 lít/đơn vị sản phẩm.
+   + Một sản phẩm có thể được phân phối qua nhiều trụ bơm.
+
+   3. Bảng fuel_dispenser (Trụ bơm): Lưu thông tin chi tiết từng trụ bơm xăng/dầu.
+   + Các cột:
+      id (PK, int): khóa chính, định danh trụ bơm.
+      station_id (FK → gas_station.id): trụ bơm thuộc về trạm nào.
+      product_id (FK → product.id): trụ bơm phân phối sản phẩm nào.
+      dispenser_code (varchar): mã hoặc tên trụ bơm
+      status (varchar): trạng thái (VD: Hoạt động, Bảo trì).
+   + Mỗi trụ bơm gắn với 1 trạm xăng và 1 loại sản phẩm.
+
+   4. Bảng transactions (Giao dịch bán hàng): Lưu lại các giao dịch bán xăng/dầu.
+   + Các cột:
+      id (PK, int): khóa chính, định danh giao dịch.
+      station_id (FK → gas_station.id): giao dịch thuộc trạm nào.
+      dispenser_id (FK → fuel_dispenser.id): giao dịch diễn ra tại trụ nào.
+      quantity (decimal): số lượng (lít) bán ra.
+      total_amount (decimal): tổng số tiền.
+      payment_method (varchar): phương thức thanh toán (Tiền mặt, Thẻ, Ví điện tử).
+      created_at (datetime): thời điểm giao dịch.
+   + Mỗi giao dịch gắn với 1 trạm xăng và 1 trụ bơm.
+
+- Hướng dẫn thực thi:
+  1. Mở SQL Server Management Studio (SSMS)
+  2. Copy toàn bộ nội dung file SQL script.sql vào cửa sổ truy vấn.
+  3. Chạy từng khối lệnh (mỗi khối kết thúc bằng GO) để tạo bảng và thêm dữ liệu.
+  4. Sau khi có dữ liệu, chạy các truy vấn phía dưới để kiểm tra kết quả.
+  5. Có thể thay đổi tham số trong các truy vấn (ví dụ: khoảng ngày, ID trạm, ID trụ) để phù hợp với nhu cầu thực tế.

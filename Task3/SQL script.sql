@@ -50,6 +50,57 @@ GO
 ALTER TABLE [transactions] ADD FOREIGN KEY ([dispenser_id]) REFERENCES [fuel_dispenser] ([id])
 GO
 
+-- ================================
+-- INSERT DATA FOR GAS STATION DB
+-- ================================
+
+-- 1. Thêm dữ liệu bảng gas_station
+INSERT INTO gas_station ([name], [address], [phone]) VALUES
+(N'Petrolimex Trạm 1', N'123 Lê Lợi, Hà Nội', N'024-111-2222'),
+(N'Petrolimex Trạm 2', N'456 Nguyễn Huệ, TP.HCM', N'028-333-4444'),
+(N'PV Oil Trạm 3',    N'789 Trần Hưng Đạo, Đà Nẵng', N'0236-555-6666'),
+(N'Petrolimex Trạm 4', N'101 Cách Mạng Tháng 8, Cần Thơ', N'0292-777-8888'),
+(N'PV Oil Trạm 5',    N'202 Phan Chu Trinh, Hải Phòng', N'0225-999-0000');
+GO
+
+-- 2. Thêm dữ liệu bảng product (5 sản phẩm)
+INSERT INTO product ([name], [type], [price]) VALUES
+(N'Xăng RON 95-IV',        N'Xăng', 24500),
+(N'Xăng E5 RON 92-II',     N'Xăng', 22500),
+(N'Dầu DO 0,05S-II',       N'Dầu', 20500),
+(N'Dầu hỏa',            N'Dầu', 18500),
+(N'Dầu Diesel EN590',   N'Dầu', 21500);
+GO
+
+-- 3. Thêm dữ liệu bảng fuel_dispenser
+INSERT INTO fuel_dispenser ([station_id], [product_id], [dispenser_code], [status]) VALUES
+(1, 1, N'DSP-001', N'Hoạt động'),
+(1, 2, N'DSP-002', N'Hoạt động'),
+(2, 3, N'DSP-003', N'Bảo trì'),
+(3, 1, N'DSP-004', N'Hoạt động'),
+(4, 2, N'DSP-005', N'Hoạt động'),
+(5, 4, N'DSP-006', N'Hoạt động'), 
+(5, 5, N'DSP-007', N'Hoạt động');
+GO
+
+-- 4. Thêm dữ liệu bảng transactions
+INSERT INTO transactions ([station_id], [dispenser_id], [quantity], [total_amount], [payment_method], [created_at]) VALUES
+(1, 1, 20, 20 * 24500, N'Tiền mặt',    '2025-08-01 08:30:00'),
+(1, 2, 15, 15 * 22500, N'Chuyển khoản','2025-08-01 09:00:00'),
+(2, 3, 30, 30 * 20500, N'Tiền mặt',    '2025-08-02 10:15:00'),
+(3, 4, 10, 10 * 24500, N'Ví điện tử',  '2025-08-03 11:20:00'),
+(4, 5, 25, 25 * 22500, N'Tiền mặt',    '2025-08-04 12:45:00'),
+(1, 1, 12, 12 * 24500, N'Ví điện tử',  '2025-08-05 14:10:00'),
+(2, 3, 18, 18 * 20500, N'Chuyển khoản','2025-08-06 15:30:00'),
+(3, 4, 22, 22 * 24500, N'Tiền mặt',    '2025-08-07 16:50:00'),
+(4, 5,  8,  8 * 22500, N'Ví điện tử',  '2025-08-08 17:25:00'),
+(1, 2, 14, 14 * 22500, N'Tiền mặt',    '2025-08-09 18:40:00'),
+(5, 6, 20, 20 * 18500, N'Tiền mặt',    '2025-08-10 09:15:00'),
+(5, 6, 35, 35 * 18500, N'Chuyển khoản','2025-08-11 10:30:00'),
+(5, 7, 25, 25 * 21500, N'Ví điện tử',  '2025-08-12 14:45:00'),
+(5, 7, 40, 40 * 21500, N'Tiền mặt',    '2025-08-13 16:00:00');
+GO
+
 
 -- ================================
 -- Queries for Gas Station Transactions
