@@ -26,6 +26,7 @@ export default function Page() {
   const [fromHour, setFromHour] = useState<Date | null>(null);
   const [toHour, setToHour] = useState<Date | null>(null);
 
+  // load file excel
   const handleFile = async (file: File) => {
     const buf = await file.arrayBuffer();
     const wb = XLSX.read(buf, { type: "array" });
@@ -56,6 +57,7 @@ export default function Page() {
     setRawData(jsonData);
   };
 
+  // lọc dữ liệu theo giờ
   const filtered = useMemo(() => {
     if (!rawData.length) return [];
 
@@ -164,8 +166,6 @@ export default function Page() {
         </span>
       </div>
 
-
-
       {/* Bảng kết quả */}
       <div className="overflow-x-auto bg-white shadow">
         {filtered.length > 0 ? (
@@ -196,8 +196,7 @@ export default function Page() {
           </table>
         ) : (
           <p className="text-gray-600 text-center py-6">
-            Chưa có dữ liệu hiển thị. Hãy chọn file phù hợp và/hoặc chọn khoảng
-            giờ.
+            Chưa có dữ liệu hiển thị. Hãy chọn file phù hợp và/hoặc chọn khoảng giờ.
           </p>
         )}
       </div>

@@ -1,4 +1,5 @@
-- Dùng thư viện xlsx, React, MUI
+- Dùng thư viện xlsx, React, MUI.
+
 - Giao diện: 
   + 1 header(Trích xuất dữ liệu)
   + 1 nút chọn load file
@@ -7,5 +8,13 @@
   + 1 bảng hiển thị dữ liệu
 
  - Cách thực hiện: 
-   + Khi bấm nút load file sẽ hiển thị hộp thoại chọn file (mặc định file là .xlsx)
-   + 
+   + Khi bấm nút load file sẽ hiển thị hộp thoại chọn file (mặc định file là .xlsx).
+   + Sau khi chọn file xong load dữ liệu từ sheet đầu tiền ra mảng 2 chiều (mỗi dòng là 1 phần tử, mỗ ô là phần tử con).
+   + Gán các thông tin (Chuỗi, Trạm, ...) vào một useState để lấy khi cần.
+   + Tách dữ liệu thành hai phần: mảng tên cột và các dòng dữ liệu sau đó.
+   + Ánh xạ mỗi tên cột là giá trị của 1 dòng dữ liệu và trả về mảng json như sau [{ STT: "1", Ngày: “21/03/2024/”, Giờ:”21:10:28”,…. },{ STT: "2", Ngày: “21/03/2024/”, Giờ:”21:09:50”,…. },…]
+   + Lưu mảng này vô  một useState để lọc theo giờ nhập vào.
+   + Dùng useMemo để quản lý sự thay đổi.
+   + Sẽ có 1 hàm để tính tổng thành tiền của dữ liệu.
+
+- Cấu trúc dự án:
