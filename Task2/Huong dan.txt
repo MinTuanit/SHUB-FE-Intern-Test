@@ -1,1 +1,24 @@
-- dùng thư viện xlsx
+- Dùng thư viện React, MUI, Joi(để validate)
+
+- Giao diện: 1 nút "Thêm giao dịch" để mở Hộp thoại sau:
+  + 1 header(Nhập giao dịch, nút cập nhật, nút đóng)
+  + 1 DateTimePicker để nhập ngày giờ
+  + 1 TextField để nhập số lượng
+  + 1 select để chọn trụ
+  + 1 textField nhập doanh thu
+  + 1 textField nhập đơn giá
+
+- Cách thực hiện: 
+  + Sau khi nhập dữ liệu, dữ liệu sẽ được lưu vào một useState để quản lý trạng thái form.
+  + Khi bấm nút Cập nhật, dữ liệu sẽ được kiểm tra hợp lệ bằng thư viện Joi:
+  + Nếu có lỗi, thông báo lỗi sẽ hiển thị dưới các trường tương ứng và tổng hợp ở cuối form.
+  + Nếu hợp lệ, hiển thị thông báo cập nhật thành công.
+  + Khi thay đổi dữ liệu các trường sẽ reset lại trạng thái lỗi để không bị dính lỗi trước đó.
+
+- Hướng dẫn thực hiện:
+   + Sau khi clone dự án về tiến hành cài thự viện bằng các câu lệnh như sau:
+     cd Task2/task2
+     npm i
+     npm run dev
+   + Mở đường link http://localhost:3000/ để giao diện, nhấn nút "Thêm giao dịch" để xem giao diện.
+   + Nhập các trường dữ liệu và bấm cập nhật để xem thông báo tương ứng.
